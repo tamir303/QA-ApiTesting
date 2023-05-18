@@ -17,16 +17,13 @@ public class Send_PostResBin_Test extends Abstract_Test {
         Response post, get;
         post = PostResBin.send_res();
 
-        System.err.println("Http Status: " + post.getStatusCode()+"\n" +
-               "Object Id: " + post.jsonPath().getString("id")+" \n" +
-                "TimeCreated:" + post.jsonPath().getString("createdAt"));
+        System.err.println("Post:\nHttp Status: " + post.getStatusCode()+"\n" +
+               "Object Id: " + post.jsonPath().getString("bookingid")+" \n");
 
-        String post_id = post.jsonPath().getString("id");
+        String post_id = post.jsonPath().getString("bookingid");
         Assert.assertNotNull(get = GetWithQueryParams.send_get_params(post_id));
 
-        System.err.println("\nHttp Status: " + get.getStatusCode()+"\n" +
-                "Object Id: " + get.jsonPath().getString("id")+" \n" +
-                "TimeCreated:" + get.jsonPath().getString("createdAt"));
+        System.err.println("Get:\nHttp Status: " + get.getStatusCode() +"\n");
         get.getBody().prettyPrint();
     }
 
