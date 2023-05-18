@@ -11,6 +11,7 @@ public class PostResBin {
 
     public static Response send_res() {
         String requestBody = Objects.requireNonNull(Utils.readJson("./src/json/post.json")).toString();
+        RestAssured.baseURI = "https://restful-booker.herokuapp.com";
 
         Response response = (Response) given()
                 .header("Content-type", "application/json")
