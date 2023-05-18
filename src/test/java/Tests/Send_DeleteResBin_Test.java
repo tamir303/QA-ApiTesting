@@ -1,32 +1,33 @@
 package Tests;
 
+import RestPackage.DelResBin;
 import RestPackage.GetWithQueryParams;
 import RestPackage.PostResBin;
 import RestPackage.PutResBin;
 import io.restassured.response.Response;
+import org.apache.http.HttpRequest;
 import org.junit.Assert;
+import org.junit.Test;
 import org.junit.internal.TextListener;
 import org.junit.runner.JUnitCore;
-import org.testng.annotations.Test;
 
-public class Send_PutResBin_Test extends Abstract_Test {
+public class Send_DeleteResBin_Test extends Abstract_Test {
 
     @Test
-    public void updateBookingTest() {
+    public void deleteBookingTest() {
         Response post, get;
         post = PostResBin.send_res();
-        System.err.println("Post:\nHttp Status: " + post.getStatusCode()+"\n" +
-                "Object Id: " + post.jsonPath().getString("bookingid")+" \n");
+        System.err.println("Post:\nHttp Status: " + post.getStatusCode() + "\n" +
+                "Object Id: " + post.jsonPath().getString("bookingid") + " \n");
 
         String post_id = post.jsonPath().getString("bookingid");
         Assert.assertNotNull(get = GetWithQueryParams.send_get_params(post_id));
-        System.err.println("Get:\nHttp Status: " + get.getStatusCode() +"\n");
+        System.err.println("Get:\nHttp Status: " + get.getStatusCode() + "\n");
         get.getBody().prettyPrint();
 
-        PutResBin.get_res(post_id, token);
-        Assert.assertNotNull(get = GetWithQueryParams.send_get_params(post_id));
-        System.err.println("PUT:\nHttp Status: " + get.getStatusCode() +"\n");
-        get.getBody().prettyPrint();
+        DelResBin.del_obj(post_id, token);
+        get = GetWithQueryParams.send_get_params(post_id);
+        Assert.assertEquals(get.getStatusCode(), 404);
     }
 
     public static void main(String[] args) {

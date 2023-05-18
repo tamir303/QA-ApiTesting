@@ -17,7 +17,7 @@ public class GetToken {
                 .and()
                 .body(requestBody)
                 .when()
-                .post("/booking")
+                .post("/auth")
                 .then()
                 .extract();
 
