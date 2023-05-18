@@ -7,17 +7,17 @@ import java.util.Objects;
 
 import static io.restassured.RestAssured.given;
 
-public class PostResBin {
+public class PutResBin {
 
-    public static Response send_res() {
+    public static Response get_res(String id) {
         String requestBody = Objects.requireNonNull(Utils.readJson("./src/json/post.json")).toString();
 
         Response response = (Response) given()
-                .header("Content-type", "application/json")
+                .header("Content-Type", "application/json")
                 .and()
                 .body(requestBody)
                 .when()
-                .post("/booking")
+                .put("/booking")
                 .then()
                 .extract();
 

@@ -1,5 +1,7 @@
 package RestPackage;
 
+import io.restassured.mapper.ObjectMapper;
+import io.restassured.path.json.JsonPath;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -19,5 +21,9 @@ public class Utils {
             System.err.println(e.getMessage());
         }
         return null;
+    }
+
+    public static void printJson(JsonPath json) {
+        System.err.println(json.get().toString());
     }
 }

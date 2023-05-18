@@ -1,16 +1,14 @@
 package RestPackage;
 
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 import java.util.Objects;
 
 import static io.restassured.RestAssured.given;
 
-public class PostResBin {
-
-    public static Response send_res() {
-        String requestBody = Objects.requireNonNull(Utils.readJson("./src/json/post.json")).toString();
+public class GetToken {
+    public static Response get_token() {
+        String requestBody = Objects.requireNonNull(Utils.readJson("./src/json/token.json")).toString();
 
         Response response = (Response) given()
                 .header("Content-type", "application/json")

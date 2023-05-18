@@ -14,14 +14,14 @@ import org.testng.Assert;
 import static io.restassured.RestAssured.given;
 
 public class GetWithQueryParams {
-        public static Response send_get_params() {
+        public static Response send_get_params(String id) {
 
-            RestAssured.baseURI ="http://jsonplaceholder.typicode.com";
+            RestAssured.baseURI = "https://restful-booker.herokuapp.com";
 
-            Response response = (Response) given().queryParam("id", "2")
-                    .header("Content-type", "application/json")
+            Response response = (Response) given().queryParam("id", id)
+                    .header("Accept", "application/json")
                     .when()
-                    .get("/users")
+                    .get("/booking/" + id)
                     .then()
                     .extract();
 
