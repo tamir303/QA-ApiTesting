@@ -1,27 +1,9 @@
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+package Tests;
+
+import io.restassured.response.Response;
 import org.junit.internal.TextListener;
 import org.junit.runner.JUnitCore;
-
-import junit.framework.Assert;
-
-import RestPackage.*;
-
-import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import org.testng.annotations.Test;
 
 public class Send_GetResBin_Test extends Abstract_Test {
 
@@ -42,7 +24,7 @@ public class Send_GetResBin_Test extends Abstract_Test {
         // Assert.assertEquals(statusCode, 200);
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         JUnitCore junit = new JUnitCore();
         junit.addListener(new TextListener(System.out));
         org.junit.runner.Result result = junit.run(Send_GetResBin_Test.class); // Replace "SampleTest" with the name of your class

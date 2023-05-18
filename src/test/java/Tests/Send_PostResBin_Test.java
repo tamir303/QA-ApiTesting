@@ -1,37 +1,21 @@
+package Tests;
+
 import org.junit.Test;
 import org.junit.internal.TextListener;
 import org.junit.runner.JUnitCore;
 
-import junit.framework.Assert;
-
 import RestPackage.*;
 
-import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class Send_PostResBin_Test extends Abstract_Test {
 
     @Test
     public void createBookingTest() {
-        String requestBody = "{\"firstname\":\"mymymy\",\"lastname\":\"Brown\",\"totalprice\":111,\"depositpaid\":true,\"bookingdates\":{\"checkin\":\"2018-01-01\",\"checkout\":\"2019-01-01\"},\"additionalneeds\":\"Breakfast\"}";
-
-        request.header("Content-Type", "application/json");
-        request.body(requestBody);
-
-        Response response = request.post("/booking");
-        int statusCode = response.getStatusCode();
+        Response response = PostResBin.send_res();
+        String s_response = response.toString();
+        System.err.println(s_response);
+        System.err.println(response.getStatusCode()+" "+response.jsonPath().getString("id")+" "+response.jsonPath().getString("createdAt"));
 
         // Add assertions to validate the response
         // For example:

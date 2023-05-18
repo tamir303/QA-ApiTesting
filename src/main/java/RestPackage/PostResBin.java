@@ -3,16 +3,16 @@ package RestPackage;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
+import java.util.Objects;
+
 import static io.restassured.RestAssured.given;
 
 public class PostResBin {
 
+    String postFilePath = "src/json/post.json";
+
     public static Response send_res() {
-        String requestBody = "{\n" +
-                "  \"name\": \"formystudents\",\n" +
-                "  \"job\": \"qaProffessional\"\n}";
-
-
+        String requestBody = Objects.requireNonNull(Utils.readJson("post.json")).toString();
         RestAssured.baseURI = "https://reqres.in";
 
 
@@ -24,10 +24,6 @@ public class PostResBin {
                 .post("/api/users")
                 .then()
                 .extract();
-
-        //String s_repronse=response.toString();
-
-        // System.out.println(s_repronse);
 
         return (response);
     }
