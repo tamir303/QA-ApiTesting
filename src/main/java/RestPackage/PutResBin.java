@@ -9,8 +9,7 @@ import static io.restassured.RestAssured.given;
 
 public class PutResBin {
 
-    public static Response get_res(String id, String token) {
-        String requestBody = Objects.requireNonNull(Utils.readJson("./src/json/put.json")).toString();
+    public static Response get_res(String id, String token, String requestBody) {
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
         Response response = (Response) given()
                 .header("Content-Type", "application/json")

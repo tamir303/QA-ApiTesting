@@ -1,0 +1,11 @@
+{
+  "firstname" : "IamTheOneAndOnly",
+  "lastname" : "Yuval Mastey",
+  "totalprice" : 30,
+  "depositpaid" : false,
+  "bookingdates": {
+    "checkin": "KoshKisKosh",
+    "checkout": "KishKoshKish"
+  },
+  "additionalneeds" : "Dinner"
+}

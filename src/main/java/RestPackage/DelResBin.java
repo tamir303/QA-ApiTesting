@@ -11,11 +11,11 @@ public class DelResBin {
     public static Response del_obj(String id, String token) {
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
         Response response = (Response) given()
-                .header("Content-Type", "application/json")
-                .header("Cookie","token="+token)
+                .header("Cookie","token=" + token)
                 .when()
                 .delete("/booking/" + id)
-                .then();
+                .then()
+                .extract();
 
         return (response);
     }
